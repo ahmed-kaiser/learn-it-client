@@ -23,7 +23,7 @@ const Navbar = () => {
         </Link>
         <div
           className={`absolute md:static left-0 w-full bg-slate-800 ${
-            menuView ? "top-16" : "-top-60"
+            menuView ? "top-16" : "-top-[300px]"
           } -z-10 md:z-10 duration-500 ease-in-out pt-3 md:pt-0 pb-6 md:pb-0 px-3 flex flex-col md:flex-row gap-4 items-center justify-between border-t-2 border-slate-700 md:border-t-0`}
         >
           <div className="grow flex flex-col md:flex-row gap-4 justify-center w-full md:w-auto order-2 md:order-1">

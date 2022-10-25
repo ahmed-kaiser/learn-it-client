@@ -5,7 +5,7 @@ const Root = () => {
     return (
         <>
             <Navbar />
-            <main className="">
+            <main className="relative -z-20 md:static">
                 <Outlet />
             </main>
         </>
