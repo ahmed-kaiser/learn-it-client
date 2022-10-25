@@ -16,8 +16,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-slate-800 h-16 flex items-center text-slate-200 px-2 md:px-6 relative">
-      <div className="md:container mx-auto lg:max-w-7xl flex items-center justify-between w-full">
+    <nav className="bg-slate-800 h-16 flex items-center text-slate-200 relative">
+      <div className="md:container mx-auto lg:max-w-7xl flex items-center justify-between w-full px-2 md:px-6">
         <Link to="/">
           <img src={logo} alt="logo" className="w-[180px]" />
         </Link>

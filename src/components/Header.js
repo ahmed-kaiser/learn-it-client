@@ -2,7 +2,7 @@ import header_image from '../assets/images/header-image3.png';
 const Header = () => {
     return (
         <section>
-            <div className="md:container mx-auto lg:max-w-7xl px-3 md:px-6 py-10 grid grid-col-1 sm:grid-cols-2 items-center gap-6 relative -z-20">
+            <div className="md:container mx-auto lg:max-w-7xl px-3 md:px-6 py-10 grid grid-col-1 sm:grid-cols-2 items-center gap-6">
                 <div className="text-center sm:text-start">
                     <small className="text-blue-700 font-bold text-lg">Start learning</small>
                     <h1 className="font-bold text-3xl leading-[40px] lg:text-5xl lg:leading-[60px] font-serif text-slate-800">Build Data Skills <br/> <span className="text-blue-700" >Online</span></h1>
