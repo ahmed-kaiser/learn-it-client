@@ -95,7 +95,7 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link to='/profile' data-tip={userData.displayName}>
+                <Link to="/profile" data-tip={userData.displayName}>
                   <img
                     src={userData.photoURL}
                     onError={(e) => (e.currentTarget.src = defaultProfile)}
@@ -109,6 +109,7 @@ const Navbar = () => {
                 >
                   Sign Out
                 </button>
+                <ReactTooltip />
               </>
             )}
           </div>
@@ -126,7 +127,6 @@ const Navbar = () => {
           )}
         </div>
       </div>
-      <ReactTooltip />
     </nav>
   );
 };

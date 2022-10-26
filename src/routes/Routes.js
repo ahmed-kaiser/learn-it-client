@@ -2,10 +2,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from '../layout/Root';
 import Blog from '../pages/Blog';
 import CategoryBasedCourse from '../pages/CategoryBasedCourse';
+import CourseDetail from '../pages/CourseDetail/CourseDetail';
 import Courses from '../pages/Courses';
 import Error from '../pages/Error';
 import Faq from '../pages/Faq';
 import Home from '../pages/Home/Home';
+import PaymentDetail from '../pages/PaymentDetail';
 import Profile from '../pages/Profile';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
@@ -50,6 +52,16 @@ const Routes = () => {
                 {
                     path: '/profile',
                     element: <Profile />
+                },
+                {
+                    path: '/course/:id',
+                    element: <CourseDetail />,
+                    loader: ({ params }) => fetch(`http://localhost:5001/course/${params.id}`)
+                },
+                {
+                    path: '/course/:id/payment-detail',
+                    element: <PaymentDetail />,
+                    loader: ({ params }) => fetch(`http://localhost:5001/course/${params.id}`)
                 }
             ]
         }

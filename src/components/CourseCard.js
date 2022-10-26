@@ -1,4 +1,5 @@
 import { RiStarFill, RiArrowRightSFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const CourseCard = ({ course }) => {
   return (
@@ -16,10 +17,10 @@ const CourseCard = ({ course }) => {
           <RiStarFill className="text-yellow-400 h-5 w-5" />
           {course.ratting}
         </p>
-        <button className="bg-blue-500 hover:bg-blue-600 py-1 px-4 rounded-md text-slate-100 font-semibold flex items-center">
+        <Link to={`/course/${course.id}`} className="bg-blue-500 hover:bg-blue-600 py-1 px-4 rounded-md text-slate-100 font-semibold flex items-center">
           Explore
           <RiArrowRightSFill className="h-5 w-5" />
-        </button>
+        </Link>
       </div>
     </div>
   );

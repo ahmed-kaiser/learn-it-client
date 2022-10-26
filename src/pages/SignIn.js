@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -12,8 +11,7 @@ const SignIn = () => {
   const {
     register,
     handleSubmit,
-    reset,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm();
   const navigate = useNavigate();
 
