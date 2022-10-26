@@ -1,21 +1,34 @@
+import { useContext } from "react";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import ReactTooltip from "react-tooltip";
 import {
   RiMenuFill,
   RiCloseFill,
   RiLightbulbFlashLine,
   RiLightbulbLine,
 } from "react-icons/ri";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/images/logo.png";
+import { AuthContext } from "../context/UserContext";
+import defaultProfile from "../assets/images/default-profile.jpg";
 
 const activeLink = "underline text-slate-200";
 const inActiveLink = "text-slate-300";
 
 const Navbar = () => {
+  const { userData, userSignOut } = useContext(AuthContext);
   const [menuView, setMenuView] = useState(false);
+  const navigate = useNavigate();
 
   const handleMenuBtn = () => {
     setMenuView(!menuView);
+  };
+
+  const handleSignOut = () => {
+    userSignOut()
+      .then(() => navigate("/"))
+      .catch((error) => toast.error(error.code));
   };
 
   return (
@@ -64,19 +77,40 @@ const Navbar = () => {
               FAQ
             </NavLink>
           </div>
-          <div className="flex gap-4 w-full md:w-auto order-1 md:order-2">
-            <Link
-              to="/sign-in"
-              className="border py-1 px-3 rounded-md font-semibold shadow-md hover:bg-slate-600"
-            >
-              Sign-In
-            </Link>
-            <Link
-              to="/sign-up"
-              className="border py-1 px-3 rounded-md font-semibold shadow-md hover:bg-slate-600"
-            >
-              Sign-Up
-            </Link>
+          <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto order-1 md:order-2">
+            {!userData ? (
+              <>
+                <Link
+                  to="/sign-in"
+                  className="w-fit border py-1 px-3 rounded-md font-semibold shadow-md hover:bg-slate-600 text-sm"
+                >
+                  Sign-In
+                </Link>
+                <Link
+                  to="/sign-up"
+                  className="w-fit border py-1 px-3 rounded-md font-semibold shadow-md hover:bg-slate-600 text-sm"
+                >
+                  Sign-Up
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link to='/profile' data-tip={userData.displayName}>
+                  <img
+                    src={userData.photoURL}
+                    onError={(e) => (e.currentTarget.src = defaultProfile)}
+                    alt="profile_picture"
+                    className="w-9 h-9 rounded-full"
+                  />
+                </Link>
+                <button
+                  onClick={handleSignOut}
+                  className="w-fit border py-1 px-3 rounded-md font-semibold shadow-md text-sm hover:bg-slate-600"
+                >
+                  Sign Out
+                </button>
+              </>
+            )}
           </div>
           <div className="order-3 w-full md:w-auto">
             <button>
@@ -92,6 +126,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
+      <ReactTooltip />
     </nav>
   );
 };

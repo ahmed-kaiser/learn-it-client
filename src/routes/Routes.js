@@ -6,6 +6,7 @@ import Courses from '../pages/Courses';
 import Error from '../pages/Error';
 import Faq from '../pages/Faq';
 import Home from '../pages/Home/Home';
+import Profile from '../pages/Profile';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 
@@ -45,6 +46,10 @@ const Routes = () => {
                 {
                     path: '/sign-up',
                     element: <SignUp />
+                },
+                {
+                    path: '/profile',
+                    element: <Profile />
                 }
             ]
         }

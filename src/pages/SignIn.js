@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FormInputAlert from "../components/FormInputAlert";
 import FormSocialLinkBtn from "../components/FormSocialLinkBtn";
 import { AuthContext } from "../context/UserContext";
@@ -15,24 +15,16 @@ const SignIn = () => {
     reset,
     formState: { errors, isSubmitSuccessful },
   } = useForm();
+  const navigate = useNavigate();
 
   const handleFormSubmit = (data) => {
     signInWithEmail(data.email, data.password)
       .then((result) => {
-        console.log(result.user);
         toast.success(`Welcome, ${result.user.displayName}`);
+        navigate('/');
       })
       .catch((error) => toast.error(error.code));
   };
-
-  useEffect(() => {
-    if(isSubmitSuccessful) {
-        reset({
-            email: "",
-            password: "",
-          });
-    }
-  }, [reset, isSubmitSuccessful]);
 
   return (
     <section className="px-2 md:px-6">
@@ -43,13 +35,7 @@ const SignIn = () => {
         <form onSubmit={handleSubmit(handleFormSubmit)} className="mt-2">
           <div className="my-2">
             <input
-              {...register("email", {
-                required: "email required",
-                pattern: {
-                  value: /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/,
-                  message: "Invalid pattern",
-                },
-              })}
+              {...register("email", { required: "email required" })}
               type="email"
               placeholder="Your Email"
               className="border px-2 py-2 w-full rounded-md outline-none text-slate-600"
@@ -58,13 +44,7 @@ const SignIn = () => {
           </div>
           <div className="my-2">
             <input
-              {...register("password", {
-                required: "Password required",
-                minLength: {
-                  value: 8,
-                  message: "minimum 8 character required",
-                },
-              })}
+              {...register("password", { required: "Password required" })}
               type="password"
               placeholder="Password"
               className="border px-2 py-2 w-full rounded-md outline-none text-slate-600"
