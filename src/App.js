@@ -1,8 +1,12 @@
-import Routes from "./routes/Routes";
+import Routes from './routes/Routes';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
-    <Routes />
+    <>
+      <Routes />
+      <Toaster />
+    </>
   );
 }
 

@@ -1,7 +1,6 @@
 import { RiStarFill, RiArrowRightSFill } from "react-icons/ri";
 
 const CourseCard = ({ course }) => {
-  console.log(course);
   return (
     <div className="w-[280px] rounded-lg bg-slate-50 relative cursor-pointer shadow-md hover:shadow-lg">
       <img
