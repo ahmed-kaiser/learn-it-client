@@ -1,5 +1,6 @@
 import AllCategories from '../components/AllCategories';
 import Header from '../components/Header';
+import Newsletter from '../components/Newsletter';
 import PopularCourses from '../components/PopularCourses';
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
          <Header />
          <AllCategories />
          <PopularCourses />
+         <Newsletter />
         </>
     );
 };
