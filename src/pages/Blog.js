@@ -1,21 +1,35 @@
+import { useContext } from "react";
 import { RiAddCircleLine } from "react-icons/ri";
+import { DarkModeContext } from "../context/LightModeContext";
 
 const Card = ({ question, children }) => {
+  const { lightState } = useContext(DarkModeContext);
+
   return (
-    <div className="px-3 py-6 mb-4 bg-slate-100 rounded-md">
+    <div
+      className={`px-3 py-6 mb-4 rounded-md ${
+        lightState ? "bg-slate-100" : "bg-slate-800"
+      } `}
+    >
       <h4 className="font-semibold flex items-center gap-1 mb-2">
         <RiAddCircleLine />
         {question}
       </h4>
-      <div className="pl-4">{children}</div>
+      <div className="pl-4 leading-7">{children}</div>
     </div>
   );
 };
 
 const Blog = () => {
+  const { lightState } = useContext(DarkModeContext);
+
   return (
     <section className="px-2 md:px-6">
-      <div className="sm:container mx-auto lg:max-w-4xl py-6 text-slate-700">
+      <div
+        className={`sm:container mx-auto lg:max-w-4xl py-6  ${
+          lightState ? "text-slate-700" : "text-slate-300"
+        }`}
+      >
         <h2 className="font-serif font-bold text-xl">Blog post</h2>
         <div className="py-4">
           <Card question={"What is cors?"}>

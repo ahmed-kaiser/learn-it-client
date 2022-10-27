@@ -4,9 +4,11 @@ import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import FormInputAlert from "../components/FormInputAlert";
 import FormSocialLinkBtn from "../components/FormSocialLinkBtn";
+import { DarkModeContext } from "../context/LightModeContext";
 import { AuthContext } from "../context/UserContext";
 
 const SignIn = () => {
+  const { lightState } = useContext(DarkModeContext);
   const { signInWithEmail } = useContext(AuthContext);
   const {
     register,
@@ -28,9 +30,13 @@ const SignIn = () => {
   };
 
   return (
-    <section className="px-2 md:px-6">
-      <div className="w-[310px] sm:w-[340px] mx-auto my-16 p-4 border border-slate-600 shadow-md rounded-md">
-        <h1 className="text-center text-lg font-serif font-bold text-slate-600 border-b-2 pb-2">
+    <section className="px-2 md:px-6 py-10">
+      <div className="w-[310px] sm:w-[340px] mx-auto py-8 p-4 border border-slate-600 shadow-md rounded-md">
+        <h1
+          className={`text-center text-lg font-serif font-bold border-b-2 pb-2 ${
+            lightState ? "text-slate-600 " : "text-slate-300"
+          }`}
+        >
           Sign-In
         </h1>
         <form onSubmit={handleSubmit(handleFormSubmit)} className="mt-2">

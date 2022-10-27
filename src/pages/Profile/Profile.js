@@ -1,11 +1,19 @@
+import { useContext } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { DarkModeContext } from "../../context/LightModeContext";
 
 const Profile = () => {
+  const { lightState } = useContext(DarkModeContext);
+
   return (
     <section className="px-2 md:px-6">
       <div className="sm:container mx-auto lg:max-w-4xl py-6">
-        <div className="md:grid grid-cols-4 gap-6 text-slate-700">
-          <div className="border-b-2 md:border-r-2 h-auto md:h-screen block sm:flex gap-4 md:block">
+        <div
+          className={`md:grid grid-cols-4 gap-6 ${
+            lightState ? "text-slate-700" : "text-slate-300"
+          }`}
+        >
+          <div className="border-b-2 md:border-b-0 md:border-r-2 h-auto md:h-screen block sm:flex gap-4 md:block">
             <NavLink
               to="/profile"
               end

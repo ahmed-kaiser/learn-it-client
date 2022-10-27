@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { DarkModeContext } from "../../context/LightModeContext";
 
 const SideNavbar = () => {
   const [categories, setCategories] = useState([]);
+  const { lightState } = useContext(DarkModeContext);
 
   useEffect(() => {
     fetch("http://localhost:5001/categories")
@@ -22,9 +25,13 @@ const SideNavbar = () => {
               key={item.id}
               to={`/courses/category/${item.id}`}
               className={({ isActive }) =>
-                `block py-2 px-2 border my-2 rounded-sm font-semibold text-blue-700 ${
+                `block py-2 px-2 border my-2 rounded-sm font-semibold duration-500 ${
                   isActive ? "bg-blue-50" : "hover:bg-blue-50"
-                }`
+                } ${
+                  lightState
+                    ? "text-blue-700"
+                    : "text-slate-300 hover:text-slate-900"
+                } ${isActive && !lightState ? "text-slate-900" : ""}`
               }
             >
               {item.name}

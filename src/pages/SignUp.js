@@ -5,9 +5,11 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import FormInputAlert from "../components/FormInputAlert";
 import FormSocialLinkBtn from "../components/FormSocialLinkBtn";
+import { DarkModeContext } from "../context/LightModeContext";
 import { AuthContext } from "../context/UserContext";
 
 const SignUp = () => {
+  const { lightState } = useContext(DarkModeContext);
   const { createUser, updateUserProfile, userSignOut } =
     useContext(AuthContext);
   const {
@@ -41,13 +43,17 @@ const SignUp = () => {
   }, [reset, isSubmitSuccessful]);
 
   return (
-    <section className="px-2 md:px-6">
-      <div className="w-[310px] sm:w-[340px] mx-auto my-16 p-4 border border-slate-600 shadow-md rounded-md">
-        <h1 className="text-center text-lg font-serif font-bold text-slate-600 border-b-2 pb-2">
+    <section className="px-2 md:px-6 py-10">
+      <div className="w-[310px] sm:w-[340px] mx-auto p-4 border border-slate-600 shadow-md rounded-md">
+        <h1
+          className={`text-center text-lg font-serif font-bold border-b-2 pb-2 ${
+            lightState ? "text-slate-600 " : "text-slate-300"
+          }`}
+        >
           Sign-Up Now
         </h1>
         <form onSubmit={handleSubmit(handleFormSubmit)} className="mt-2">
-          <div className="my-2">
+          <div className="my-3">
             <input
               {...register("full_name", {
                 required: "Name required",
@@ -61,7 +67,7 @@ const SignUp = () => {
               <FormInputAlert message={errors.full_name?.message} />
             )}
           </div>
-          <div className="my-2">
+          <div className="my-3">
             <input
               {...register("photo_url", { required: "Photo url required" })}
               type="text"
@@ -72,7 +78,7 @@ const SignUp = () => {
               <FormInputAlert message={errors.photo_url?.message} />
             )}
           </div>
-          <div className="my-2">
+          <div className="my-3">
             <input
               {...register("email", {
                 required: "email required",
@@ -87,7 +93,7 @@ const SignUp = () => {
             />
             {errors.email && <FormInputAlert message={errors.email?.message} />}
           </div>
-          <div className="my-2">
+          <div className="my-3">
             <input
               {...register("password", {
                 required: "Password required",

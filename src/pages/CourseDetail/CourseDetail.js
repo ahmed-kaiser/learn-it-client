@@ -6,24 +6,39 @@ import CourseContent from "./CourseContent";
 import ReactTooltip from "react-tooltip";
 import Pdf from "react-to-pdf";
 import { useRef } from "react";
+import { useContext } from "react";
+import { DarkModeContext } from "../../context/LightModeContext";
 
 const CourseDetail = () => {
   const course = useLoaderData();
   const pdfRef = useRef();
+  const { lightState } = useContext(DarkModeContext);
 
   return (
-    <section className="px-2 md:px-6 pt-6">
+    <section className="px-2 md:px-6 pt-6 pb-16">
       <div className="sm:container mx-auto lg:max-w-6xl">
-        <h2 className="font-serif font-bold text-2xl text-slate-700 pb-4 flex items-center gap-3">
+        <h2
+          className={`font-serif font-bold text-2xl pb-4 flex items-center gap-3 ${
+            lightState ? "text-slate-700" : "text-slate-200"
+          }`}
+        >
           {course.title}{" "}
-          <Pdf targetRef={pdfRef} filename="course-content.pdf" x={5} y={20} scale={0.8}>
-            {({ toPdf }) => <span
-            onClick={toPdf}
-            className="h-6 w-6 cursor-pointer"
-            data-tip="Print Course Content"
+          <Pdf
+            targetRef={pdfRef}
+            filename="course-content.pdf"
+            x={5}
+            y={20}
+            scale={0.8}
           >
-            <RiPrinterLine />
-          </span>}
+            {({ toPdf }) => (
+              <span
+                onClick={toPdf}
+                className="h-6 w-6 cursor-pointer"
+                data-tip="Print Course Content"
+              >
+                <RiPrinterLine />
+              </span>
+            )}
           </Pdf>
         </h2>
         {/* ------- Course Description -------- */}
@@ -50,7 +65,11 @@ const CourseDetail = () => {
         {/* -------- What you will learn -------- */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-14">
           <div>
-            <h3 className="font-bold text-2xl pb-4 text-slate-700">
+            <h3
+              className={`font-bold text-2xl pb-4 ${
+                lightState ? "text-slate-700" : "text-slate-200"
+              }`}
+            >
               What You will Learn
             </h3>
             <ul className="max-w-sm">
@@ -71,7 +90,11 @@ const CourseDetail = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-14">
           <img src={image_2} alt="" className="order-2 md:order-1" />
           <div className="order-1 md:order-2">
-            <h3 className="font-bold text-2xl pb-4 text-slate-700">
+            <h3
+              className={`font-bold text-2xl pb-4 ${
+                lightState ? "text-slate-700" : "text-slate-200"
+              }`}
+            >
               Other Benefit
             </h3>
             <ul className="max-w-sm">
@@ -89,7 +112,11 @@ const CourseDetail = () => {
 
         {/* -------- Course content -------- */}
         <div className="mb-16 max-w-4xl mx-auto" ref={pdfRef}>
-          <h3 className="font-bold text-2xl pb-4 text-center text-slate-700">
+          <h3
+            className={`font-bold text-2xl pb-4 text-center ${
+              lightState ? "text-slate-700" : "text-slate-200"
+            }`}
+          >
             Course Content
           </h3>
           <ul>
@@ -100,21 +127,35 @@ const CourseDetail = () => {
         </div>
 
         {/* -------- Course Instructor -------- */}
-        <div className="mb-16 max-w-4xl mx-auto bg-slate-50 px-6 py-10 rounded-lg">
-          <h3 className="font-bold text-2xl pb-4 text-center text-slate-700">
+        <div
+          className={`max-w-4xl mx-auto px-6 py-10 rounded-lg ${
+            lightState ? "bg-slate-100" : "bg-slate-700"
+          }`}
+        >
+          <h3
+            className={`font-bold text-2xl pb-4 text-center ${
+              lightState ? "text-slate-700" : "text-slate-200"
+            }`}
+          >
             Course Instructor
           </h3>
-          <div className="mt-6">
+          <div
+            className={`mt-6 ${
+              lightState ? "text-slate-700" : "text-slate-200"
+            }`}
+          >
             <img
               src={course.instructor.image}
               alt="instructor_image"
               className="w-28 h-28 rounded-full mx-auto"
             />
             <div>
-              <h4 className="font-bold mb-3 text-lg text-center">
+              <h4 className="font-bold my-3 text-lg text-center">
                 {course.instructor.name}
               </h4>
-              <p className="max-w-4xl mx-auto">{course.instructor.about}</p>
+              <p className="max-w-4xl mx-auto text-center">
+                {course.instructor.about}
+              </p>
             </div>
           </div>
         </div>

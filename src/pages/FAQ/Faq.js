@@ -1,9 +1,17 @@
+import { useContext } from "react";
+import { DarkModeContext } from "../../context/LightModeContext";
 import FaqCard from "./FaqCard";
 
 const Faq = () => {
+  const { lightState } = useContext(DarkModeContext);
+
   return (
     <section className="px-2 md:px-6">
-      <div className="sm:container mx-auto lg:max-w-4xl py-6 text-slate-700">
+      <div
+        className={`sm:container mx-auto lg:max-w-4xl py-6  ${
+          lightState ? "text-slate-700" : "text-slate-200"
+        }`}
+      >
         <h2 className="font-serif font-bold text-xl border-b-2 border-slate-100 pb-2">
           FAQ
         </h2>

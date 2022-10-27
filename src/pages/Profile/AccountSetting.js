@@ -33,7 +33,10 @@ const AccountSetting = () => {
   return (
     <div className="max-w-lg mx-auto">
       <h1 className="font-bold font-serif text-center">Update Profile</h1>
-      <form onSubmit={handleSubmit(handleFormSubmit)}>
+      <form
+        onSubmit={handleSubmit(handleFormSubmit)}
+        className="border p-4 mt-4 rounded-md"
+      >
         <div className="my-2">
           <input
             {...register("name", {

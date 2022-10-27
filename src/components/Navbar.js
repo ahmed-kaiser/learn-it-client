@@ -2,22 +2,20 @@ import { useContext } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import ReactTooltip from "react-tooltip";
-import {
-  RiMenuFill,
-  RiCloseFill,
-  RiLightbulbFlashLine,
-  RiLightbulbLine,
-} from "react-icons/ri";
+import { RiMenuFill, RiCloseFill, RiLightbulbFlashLine } from "react-icons/ri";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import { AuthContext } from "../context/UserContext";
 import defaultProfile from "../assets/images/default-profile.jpg";
+import { DarkModeContext } from "../context/LightModeContext";
 
 const activeLink = "underline text-slate-200";
 const inActiveLink = "text-slate-300";
 
 const Navbar = () => {
   const { userData, userSignOut } = useContext(AuthContext);
+  const { handleLightState, lightState } = useContext(DarkModeContext);
+
   const [menuView, setMenuView] = useState(false);
   const navigate = useNavigate();
 
@@ -32,7 +30,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-slate-800 h-16 flex items-center text-slate-200 px-2 md:px-6 sticky top-0 z-10">
+    <nav
+      className={`bg-slate-800 h-16 flex items-center text-slate-200 px-2 md:px-6 sticky top-0 z-10 ${
+        lightState ? "" : "border-b-2 border-slate-600"
+      }`}
+    >
       <div className="md:container mx-auto lg:max-w-7xl flex items-center justify-between w-full">
         <Link to="/">
           <img src={logo} alt="logo" className="w-[180px]" />
@@ -116,9 +118,12 @@ const Navbar = () => {
           </div>
           {/* ----- dark and light mode button ------ */}
           <div className="order-3 w-full md:w-auto">
-            <button>
-              <RiLightbulbFlashLine className="w-6 h-6 text-yellow-400" />
+            <button onClick={handleLightState} data-tip={lightState? "Dark Mode Off" : "Dark Mode On"}>
+              <RiLightbulbFlashLine
+                className={`w-6 h-6 ${lightState ? "text-yellow-400" : ""}`}
+              />
             </button>
+            <ReactTooltip />
           </div>
         </div>
         {/* ----- Menu button ----- */}
