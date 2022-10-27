@@ -10,6 +10,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
   signOut,
+  updatePassword,
 } from "firebase/auth";
 import app from "../firebase/firebase.init";
 
@@ -48,6 +49,10 @@ const UserContext = ({ children }) => {
     return signOut(auth)
   };
 
+  const changePassword = (newPassword) => {
+    return updatePassword(auth.currentUser, newPassword)
+  };
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -68,7 +73,8 @@ const UserContext = ({ children }) => {
     googleSignIn,
     githubSignIn,
     updateUserProfile,
-    userSignOut
+    userSignOut,
+    changePassword
   };
 
   return (

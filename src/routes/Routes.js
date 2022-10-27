@@ -8,7 +8,10 @@ import Error from '../pages/Error';
 import Faq from '../pages/Faq';
 import Home from '../pages/Home/Home';
 import PaymentDetail from '../pages/PaymentDetail';
-import Profile from '../pages/Profile';
+import AccountSetting from '../pages/Profile/AccountSetting';
+import ChangePassword from '../pages/Profile/ChangePassword';
+import Profile from '../pages/Profile/Profile';
+import PublicProfile from '../pages/Profile/PublicProfile';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import AuthRequired from '../protected-layer/AuthRequired';
@@ -52,7 +55,21 @@ const Routes = () => {
                 },
                 {
                     path: '/profile',
-                    element: <Profile />
+                    element: <Profile />,
+                    children: [
+                        {
+                            path: '/profile',
+                            element: <PublicProfile />
+                        },
+                        {
+                            path: '/profile/account-setting',
+                            element: <AccountSetting />
+                        },
+                        {
+                            path: '/profile/change-password',
+                            element: <ChangePassword />
+                        }
+                    ]
                 },
                 {
                     path: '/course/:id',

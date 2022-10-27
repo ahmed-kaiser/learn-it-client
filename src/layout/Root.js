@@ -6,7 +6,7 @@ const Root = () => {
     return (
         <>
             <Navbar />
-            <main className="relative -z-20 md:static min-h-screen">
+            <main className="min-h-screen">
                 <Outlet />
             </main>
             <Footer />

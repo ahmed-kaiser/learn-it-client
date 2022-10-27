@@ -82,13 +82,13 @@ const Navbar = () => {
               <>
                 <Link
                   to="/sign-in"
-                  className="w-fit border py-1 px-3 rounded-md font-semibold shadow-md hover:bg-slate-600 text-sm"
+                  className="w-fit border border-blue-500 py-1 px-3 rounded-md font-semibold shadow-md hover:bg-slate-600 text-sm"
                 >
                   Sign-In
                 </Link>
                 <Link
                   to="/sign-up"
-                  className="w-fit border py-1 px-3 rounded-md font-semibold shadow-md hover:bg-slate-600 text-sm"
+                  className="w-fit border border-blue-500 py-1 px-3 rounded-md font-semibold shadow-md hover:bg-slate-600 text-sm"
                 >
                   Sign-Up
                 </Link>
@@ -100,12 +100,12 @@ const Navbar = () => {
                     src={userData.photoURL}
                     onError={(e) => (e.currentTarget.src = defaultProfile)}
                     alt="profile_picture"
-                    className="w-9 h-9 rounded-full"
+                    className="w-9 h-9 rounded-full border-2 border-slate-100"
                   />
                 </Link>
                 <button
                   onClick={handleSignOut}
-                  className="w-fit border py-1 px-3 rounded-md font-semibold shadow-md text-sm hover:bg-slate-600"
+                  className="w-fit border border-blue-500 py-1 px-3 rounded-md font-semibold shadow-md text-sm hover:bg-slate-600"
                 >
                   Sign Out
                 </button>
