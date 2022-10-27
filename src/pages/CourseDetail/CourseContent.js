@@ -10,7 +10,9 @@ const CourseContent = ({ content, count }) => {
       <ul className="pl-3">
         {content.content.map((item, index) => (
           <li key={index} className="flex items-center gap-1">
-            <span className="h-4 w-4"><RiCheckboxCircleLine /></span> 
+            <span className="h-4 w-4">
+              <RiCheckboxCircleLine />
+            </span>
             {item}
           </li>
         ))}

@@ -9,19 +9,19 @@ const FormSocialLinkBtn = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const from = location.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || "/";
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-    .then(() => navigate(from, { replace:true }))
-    .catch(error => toast.error(error.code))
-  }
+      .then(() => navigate(from, { replace: true }))
+      .catch((error) => toast.error(error.code));
+  };
 
   const handleGithubSignIn = () => [
     githubSignIn()
-    .then(() => navigate(from, { replace:true }))
-    .catch(error => toast.error(error.code))
-  ]
+      .then(() => navigate(from, { replace: true }))
+      .catch((error) => toast.error(error.code)),
+  ];
 
   return (
     <>
@@ -31,11 +31,17 @@ const FormSocialLinkBtn = () => {
         <p className="w-24 border block"></p>
       </div>
       <div>
-        <button onClick={handleGoogleSignIn} className="flex items-center justify-center gap-1 w-full my-2 py-2 px-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md">
+        <button
+          onClick={handleGoogleSignIn}
+          className="flex items-center justify-center gap-1 w-full my-2 py-2 px-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md"
+        >
           <RiGoogleFill className="w-5 h-5" />
           Google
         </button>
-        <button onClick={handleGithubSignIn} className="flex items-center justify-center gap-1 w-full my-2 py-2 px-3 bg-slate-600 hover:bg-slate-700 text-white font-semibold rounded-md">
+        <button
+          onClick={handleGithubSignIn}
+          className="flex items-center justify-center gap-1 w-full my-2 py-2 px-3 bg-slate-600 hover:bg-slate-700 text-white font-semibold rounded-md"
+        >
           <RiGithubFill className="w-5 h-5" /> Github
         </button>
       </div>

@@ -32,17 +32,17 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-slate-800 h-16 flex items-center text-slate-200 relative px-2 md:px-6">
+    <nav className="bg-slate-800 h-16 flex items-center text-slate-200 px-2 md:px-6 sticky top-0 z-10">
       <div className="md:container mx-auto lg:max-w-7xl flex items-center justify-between w-full">
         <Link to="/">
           <img src={logo} alt="logo" className="w-[180px]" />
         </Link>
         <div
-          className={`absolute md:static left-0 w-full bg-slate-800 ${
-            menuView ? "top-16" : "-top-[300px]"
-          } -z-10 md:z-10 duration-500 ease-in-out pt-3 md:pt-0 pb-6 md:pb-0 px-3 flex flex-col md:flex-row gap-4 items-center justify-between border-t-2 border-slate-700 md:border-t-0`}
+          className={`absolute top-16 md:static w-1/2 sm:w-1/3 h-[100vh] md:h-auto bg-slate-800 ${
+            menuView ? "left-0" : "-left-[350px]"
+          } duration-500 ease-in-out pt-3 md:pt-0 pb-6 md:pb-0 px-3 md:grow flex flex-col md:flex-row gap-4 items-center border-t-2 border-slate-700 md:border-t-0`}
         >
-          <div className="grow flex flex-col md:flex-row gap-4 justify-center w-full md:w-auto order-2 md:order-1">
+          <div className="md:grow flex flex-col md:flex-row gap-4 justify-center w-full md:w-auto order-2 md:order-1">
             <NavLink
               to="/"
               end
@@ -77,6 +77,7 @@ const Navbar = () => {
               FAQ
             </NavLink>
           </div>
+          {/* ----- Sign-In, Sign-Up, Sign-Out button, and Profile Image -------- */}
           <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto order-1 md:order-2">
             {!userData ? (
               <>
@@ -113,12 +114,14 @@ const Navbar = () => {
               </>
             )}
           </div>
+          {/* ----- dark and light mode button ------ */}
           <div className="order-3 w-full md:w-auto">
             <button>
               <RiLightbulbFlashLine className="w-6 h-6 text-yellow-400" />
             </button>
           </div>
         </div>
+        {/* ----- Menu button ----- */}
         <div onClick={handleMenuBtn} className="md:hidden">
           {menuView ? (
             <RiCloseFill className="h-7 w-7" />

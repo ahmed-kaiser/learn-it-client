@@ -8,7 +8,8 @@ import FormSocialLinkBtn from "../components/FormSocialLinkBtn";
 import { AuthContext } from "../context/UserContext";
 
 const SignUp = () => {
-  const { createUser, updateUserProfile, userSignOut } = useContext(AuthContext);
+  const { createUser, updateUserProfile, userSignOut } =
+    useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -20,21 +21,21 @@ const SignUp = () => {
   const handleFormSubmit = (data) => {
     createUser(data.email, data.password)
       .then((result) => {
-        updateUserProfile(data.full_name, data.photo_url)
+        updateUserProfile(data.full_name, data.photo_url);
       })
       .then(() => {
         toast.success("Account Create Successfully...");
-        userSignOut()
+        userSignOut();
       })
       .then(() => {
         toast("Redirected to Sign In....");
-        navigate('/sign-in')
+        navigate("/sign-in");
       })
       .catch((error) => toast.error(error.code));
   };
 
   useEffect(() => {
-    if(isSubmitSuccessful) {
+    if (isSubmitSuccessful) {
       reset({ full_name: "", photo_url: "", email: "", password: "" });
     }
   }, [reset, isSubmitSuccessful]);

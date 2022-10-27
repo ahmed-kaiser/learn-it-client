@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const CourseCard = ({ course }) => {
   return (
-    <div className="w-[280px] rounded-lg bg-slate-50 relative cursor-pointer shadow-md hover:shadow-lg">
+    <div className="w-[250px] rounded-lg bg-slate-50 relative cursor-pointer shadow-md hover:shadow-lg overflow-hidden">
       <img
         src={course.image}
         alt=""
@@ -17,7 +17,10 @@ const CourseCard = ({ course }) => {
           <RiStarFill className="text-yellow-400 h-5 w-5" />
           {course.ratting}
         </p>
-        <Link to={`/course/${course.id}`} className="bg-blue-500 hover:bg-blue-600 py-1 px-4 rounded-md text-slate-100 font-semibold flex items-center">
+        <Link
+          to={`/course/${course.id}`}
+          className="bg-blue-500 hover:bg-blue-600 py-1 px-4 rounded-md text-slate-100 font-semibold flex items-center"
+        >
           Explore
           <RiArrowRightSFill className="h-5 w-5" />
         </Link>

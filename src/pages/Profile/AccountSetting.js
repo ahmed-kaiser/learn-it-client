@@ -18,16 +18,16 @@ const AccountSetting = () => {
 
   useEffect(() => {
     setValue("name", userData?.displayName);
-    setValue("photo_url", userData?.photoURL)
-  }, [setValue, userData])
+    setValue("photo_url", userData?.photoURL);
+  }, [setValue, userData]);
 
   const handleFormSubmit = (data) => {
     updateUserProfile(data.name, data.photo_url)
-    .then(() => {
+      .then(() => {
         toast.success("Profile updated successfully..");
-        navigate('/profile')
-    })
-    .catch(error => toast.error(error.code))
+        navigate("/profile");
+      })
+      .catch((error) => toast.error(error.code));
   };
 
   return (
@@ -44,9 +44,7 @@ const AccountSetting = () => {
             placeholder="Your Full Name"
             className="border px-2 py-2 w-full rounded-md outline-none text-slate-600"
           />
-          {errors.name && (
-            <FormInputAlert message={errors.name?.message} />
-          )}
+          {errors.name && <FormInputAlert message={errors.name?.message} />}
         </div>
         <div className="my-2">
           <input

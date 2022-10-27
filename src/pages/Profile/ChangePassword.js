@@ -19,14 +19,14 @@ const ChangePassword = () => {
   const handleFormSubmit = (data) => {
     if (data.password1 !== data.password2) {
       setError("password2", { message: "Password didn't match" });
-    }else{
-        changePassword(data.password1)
+    } else {
+      changePassword(data.password1)
         .then(() => {
-            toast.success("Password Successfully Changed..");
-            userSignOut();
-            navigate('/sign-in');
+          toast.success("Password Successfully Changed..");
+          userSignOut();
+          navigate("/sign-in");
         })
-        .catch(error => toast.error(error.code))
+        .catch((error) => toast.error(error.code));
     }
   };
 

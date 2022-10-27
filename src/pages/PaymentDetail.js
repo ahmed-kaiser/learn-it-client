@@ -1,28 +1,28 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import FormInputAlert from "../components/FormInputAlert";
 import { AuthContext } from "../context/UserContext";
 
 const PaymentDetail = () => {
   const { userData } = useContext(AuthContext);
-  console.log(userData)
-  const [isAccept, setIsAccept] = useState(false)
+  const [isAccept, setIsAccept] = useState(false);
   const course = useLoaderData();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
   const handleFormSubmit = (data) => {
-    console.log(data);
+    navigate("/order-summary");
   };
 
   const handleAcceptBtn = (e) => {
     setIsAccept(e.target.checked);
-  }
+  };
 
   return (
     <section className="px-2 md:px-6">
@@ -182,7 +182,12 @@ const PaymentDetail = () => {
                 .
               </label>
             </div>
-            <button disabled={!isAccept} className={`py-2 px-6 w-full mt-4 text-white font-semibold rounded-md ${isAccept? 'bg-green-500': 'bg-slate-300'}`}>
+            <button
+              disabled={!isAccept}
+              className={`py-2 px-6 w-full mt-4 text-white font-semibold rounded-md ${
+                isAccept ? "bg-green-500" : "bg-slate-300"
+              }`}
+            >
               Save & Next
             </button>
           </div>

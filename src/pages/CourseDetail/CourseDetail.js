@@ -32,7 +32,10 @@ const CourseDetail = () => {
               Course Description
             </h3>
             <p className="font-semibold">{course.description}</p>
-            <Link to={`/course/${course.id}/payment-detail`} className="inline-block bg-blue-500 py-2 px-5 font-semibold text-white mt-3 rounded-md upp ">
+            <Link
+              to={`/course/${course.id}/payment-detail`}
+              className="inline-block bg-blue-500 py-2 px-5 font-semibold text-white mt-3 rounded-md upp "
+            >
               Get Premium Access
             </Link>
           </div>
