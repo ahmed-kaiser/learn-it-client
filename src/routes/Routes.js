@@ -11,6 +11,7 @@ import PaymentDetail from '../pages/PaymentDetail';
 import Profile from '../pages/Profile';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
+import AuthRequired from '../protected-layer/AuthRequired';
 
 const Routes = () => {
     const router = createBrowserRouter([
@@ -60,7 +61,7 @@ const Routes = () => {
                 },
                 {
                     path: '/course/:id/payment-detail',
-                    element: <PaymentDetail />,
+                    element: <AuthRequired><PaymentDetail /></AuthRequired>,
                     loader: ({ params }) => fetch(`http://localhost:5001/course/${params.id}`)
                 }
             ]

@@ -7,6 +7,7 @@ import { AuthContext } from "../context/UserContext";
 
 const PaymentDetail = () => {
   const { userData } = useContext(AuthContext);
+  console.log(userData)
   const [isAccept, setIsAccept] = useState(false)
   const course = useLoaderData();
   const {
@@ -51,6 +52,7 @@ const PaymentDetail = () => {
               <input
                 {...register("name", { required: "Name required" })}
                 type="text"
+                value={userData.displayName || ""}
                 placeholder="Your Name"
                 className="border px-2 py-2 w-full rounded-md outline-none text-slate-600"
               />
@@ -63,6 +65,7 @@ const PaymentDetail = () => {
               <input
                 {...register("email", { required: "Email required" })}
                 type="email"
+                value={userData.email || ""}
                 placeholder="Your Email"
                 className="border px-2 py-2 w-full rounded-md outline-none text-slate-600"
               />

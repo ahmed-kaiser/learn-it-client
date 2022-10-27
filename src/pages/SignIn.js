@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import FormInputAlert from "../components/FormInputAlert";
 import FormSocialLinkBtn from "../components/FormSocialLinkBtn";
 import { AuthContext } from "../context/UserContext";
@@ -14,12 +14,15 @@ const SignIn = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || '/';
 
   const handleFormSubmit = (data) => {
     signInWithEmail(data.email, data.password)
       .then((result) => {
         toast.success(`Welcome, ${result.user.displayName}`);
-        navigate('/');
+        navigate(from, { replace: true });
       })
       .catch((error) => toast.error(error.code));
   };

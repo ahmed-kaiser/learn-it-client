@@ -19,6 +19,7 @@ const auth = getAuth(app);
 
 const UserContext = ({ children }) => {
   const [userData, setUserData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
@@ -54,12 +55,14 @@ const UserContext = ({ children }) => {
       } else {
         setUserData(null);
       }
+      setIsLoading(false);
     });
     return () => unSubscribe();
   }, []);
 
   const shareData = {
     userData,
+    isLoading,
     createUser,
     signInWithEmail,
     googleSignIn,

@@ -1,22 +1,25 @@
 import { useContext } from "react";
 import toast from "react-hot-toast";
 import { RiGithubFill, RiGoogleFill } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/UserContext";
 
 const FormSocialLinkBtn = () => {
   const { googleSignIn, githubSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || '/';
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-    .then(() => navigate('/'))
+    .then(() => navigate(from, { replace:true }))
     .catch(error => toast.error(error.code))
   }
 
   const handleGithubSignIn = () => [
     githubSignIn()
-    .then(() => navigate('/'))
+    .then(() => navigate(from, { replace:true }))
     .catch(error => toast.error(error.code))
   ]
 
