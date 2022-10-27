@@ -6,7 +6,7 @@ const PopularCourses = () => {
   let [popularList, setPopularList] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5001/courses")
+    fetch("https://learnit-server-ahmed-kaiser.vercel.app/courses")
       .then((response) => response.json())
       .then((data) => {
         let tempList = [];

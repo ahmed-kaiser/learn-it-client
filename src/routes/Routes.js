@@ -36,13 +36,13 @@ const Routes = () => {
             {
               path: "/courses",
               element: <AllCourses />,
-              loader: () => fetch("http://localhost:5001/courses"),
+              loader: () => fetch("https://learnit-server-ahmed-kaiser.vercel.app/courses"),
             },
             {
               path: "/courses/category/:id",
               element: <CategoryBasedCourse />,
               loader: ({ params }) =>
-                fetch(`http://localhost:5001/category/${params.id}/courses`),
+                fetch(`https://learnit-server-ahmed-kaiser.vercel.app/category/${params.id}/courses`),
             },
           ],
         },
@@ -84,7 +84,7 @@ const Routes = () => {
           path: "/course/:id",
           element: <CourseDetail />,
           loader: ({ params }) =>
-            fetch(`http://localhost:5001/course/${params.id}`),
+            fetch(`https://learnit-server-ahmed-kaiser.vercel.app/course/${params.id}`),
         },
         {
           path: "/course/:id/payment-detail",
@@ -94,7 +94,7 @@ const Routes = () => {
             </AuthRequired>
           ),
           loader: ({ params }) =>
-            fetch(`http://localhost:5001/course/${params.id}`),
+            fetch(`https://learnit-server-ahmed-kaiser.vercel.app/course/${params.id}`),
         },
         {
           path: "/order-summary",
