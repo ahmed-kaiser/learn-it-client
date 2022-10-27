@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+## Learnit Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Learnit is a web-based single-page application, which is mainly designed and developed based on the e-learning platform. 
 
-## Available Scripts
+### Website Live Link
 
-In the project directory, you can run:
+https://learn-it-client.web.app/
 
-### `npm start`
+### Used Technology
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* React library for frontend.
+* react-router-dom for routing.
+* Tailwind for frontend design.
+* Firebase for user authentication.
+* react-hook-form for form validation.
+* Other are react-to-pdf, react-icons, react-tooltip, react-hot-toast for various purpose. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Project feature
 
-### `npm test`
+* The website shows courses and categories, and those data are fetched through some API.
+* The website can view courses based on different categories.
+* Users can sign-in or sign-up through email and password or using social networks Google and GitHub.
+* The system can block access for unauthorized users from accessing the private route and can direct them to the sign-in page for authorization.
+* Users can update or change some profile information like name, image, and password.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Context of this project
 
-### `npm run build`
+This project was a 2-3 day long project built during my learning journey of web development. Project goals included using technology learned up until this point. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Project Stats
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Till now this project is not fully ready, lots more functionality can be implemented.
