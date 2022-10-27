@@ -5,7 +5,7 @@ import CategoryBasedCourse from '../pages/CategoryBasedCourse';
 import CourseDetail from '../pages/CourseDetail/CourseDetail';
 import Courses from '../pages/Courses';
 import Error from '../pages/Error';
-import Faq from '../pages/Faq';
+import Faq from '../pages/FAQ/Faq';
 import Home from '../pages/Home/Home';
 import PaymentDetail from '../pages/PaymentDetail';
 import AccountSetting from '../pages/Profile/AccountSetting';

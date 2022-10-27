@@ -1,13 +1,4 @@
-import { RiAddCircleLine } from 'react-icons/ri';
-
-const Card = ({ question, answer }) => {
-  return (
-    <div className="border-l-2 border-cyan-700 p-2 mb-4 bg-slate-100">
-      <h4 className="font-semibold flex items-center gap-1"><RiAddCircleLine />{question}</h4>
-      <p>{answer}</p>
-    </div>
-  );
-};
+import FaqCard from "./FaqCard";
 
 const Faq = () => {
   return (
@@ -17,19 +8,19 @@ const Faq = () => {
           FAQ
         </h2>
         <div className="py-4">
-          <Card
+          <FaqCard
             question={"Do we have doubt support in this program?"}
             answer={
               "You may get additional feature of doubt support. While purchasing this course, click on 'Add to Cart' for Doubt Support and Assistance."
             }
           />
-          <Card
+          <FaqCard
             question={"How can I register for the course?"}
             answer={
               "You need to sign up for the course. After signing up, you need to pay when the payment link opens."
             }
           />
-          <Card
+          <FaqCard
             question={
               "What type of certificate will be offered in this program"
             }
@@ -37,17 +28,17 @@ const Faq = () => {
               "Once the course is completed. You'll be getting a course completion certificate."
             }
           />
-          <Card
+          <FaqCard
             question={"When can I make the payment for the course?"}
             answer={"The payment link will be available on the course page."}
           />
-          <Card
+          <FaqCard
             question={
               "Will the course content be available after the course end date?"
             }
             answer={"Course content comes with lifetime validity."}
           />
-          <Card
+          <FaqCard
             question={"What features does Doubt Support have?"}
             answer={
               "Doubt support helps you clear your doubt of any GFG and codeforces courses/problems. You can raise your doubt anytime. Our doubt support assistance is available 24x7."
