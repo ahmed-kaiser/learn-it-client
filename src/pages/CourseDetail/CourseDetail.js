@@ -4,21 +4,27 @@ import image_1 from "../../assets/images/image2.png";
 import image_2 from "../../assets/images/image1.png";
 import CourseContent from "./CourseContent";
 import ReactTooltip from "react-tooltip";
+import Pdf from "react-to-pdf";
+import { useRef } from "react";
 
 const CourseDetail = () => {
   const course = useLoaderData();
+  const pdfRef = useRef();
 
   return (
     <section className="px-2 md:px-6 pt-6">
       <div className="sm:container mx-auto lg:max-w-6xl">
         <h2 className="font-serif font-bold text-2xl text-slate-700 pb-4 flex items-center gap-3">
           {course.title}{" "}
-          <span
+          <Pdf targetRef={pdfRef} filename="course-content.pdf" x={5} y={20} scale={0.8}>
+            {({ toPdf }) => <span
+            onClick={toPdf}
             className="h-6 w-6 cursor-pointer"
             data-tip="Print Course Content"
           >
             <RiPrinterLine />
-          </span>
+          </span>}
+          </Pdf>
         </h2>
         {/* ------- Course Description -------- */}
         <div className="flex flex-col md:flex-row items-center border rounded-md mb-14">
@@ -82,7 +88,7 @@ const CourseDetail = () => {
         </div>
 
         {/* -------- Course content -------- */}
-        <div className="mb-16 max-w-4xl mx-auto">
+        <div className="mb-16 max-w-4xl mx-auto" ref={pdfRef}>
           <h3 className="font-bold text-2xl pb-4 text-center text-slate-700">
             Course Content
           </h3>
@@ -112,7 +118,6 @@ const CourseDetail = () => {
             </div>
           </div>
         </div>
-
         <ReactTooltip />
       </div>
     </section>
